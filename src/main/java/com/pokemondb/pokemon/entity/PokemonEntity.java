@@ -1,9 +1,12 @@
 package com.pokemondb.pokemon.entity;
 
+import java.util.List;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -33,7 +36,11 @@ public class PokemonEntity {
     private String naturaleza;
     private int nivel;
 
+    @OneToMany(mappedBy = "pokemon", fetch = jakarta.persistence.FetchType.LAZY)
+    private List<EquipoPokemonEntity> listaPokemon;
+
     public PokemonEntity() {
+        listaPokemon = new java.util.ArrayList<>();
     }
 
     public PokemonEntity(Long id, String nombre, String tipo1, String tipo2, String ataque1, String ataque2,
@@ -236,6 +243,8 @@ public class PokemonEntity {
         this.nivel = nivel;
     }
 
-    
+    public int getListaPokemon() {
+        return listaPokemon.size();
+    }
 
 }

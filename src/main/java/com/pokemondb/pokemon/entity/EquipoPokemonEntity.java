@@ -4,6 +4,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -14,21 +16,21 @@ public class EquipoPokemonEntity {
 @GeneratedValue(strategy = GenerationType.IDENTITY)
 private Long id;
 
-private int equipo_id;
-private int pokemon_id;
+    @ManyToOne
+    @JoinColumn(name = "pokemon_id")
+    private PokemonEntity pokemon;
+
+    @ManyToOne
+    @JoinColumn(name = "equipo_id")
+    private EquipoEntity equipo;
 
 public EquipoPokemonEntity() {
+
 }
 
-public EquipoPokemonEntity(Long id, int equipo_id, int pokemon_id) {
-    this.id = id;
-    this.equipo_id = equipo_id;
-    this.pokemon_id = pokemon_id;
-}
-
-public EquipoPokemonEntity(int equipo_id, int pokemon_id) {
-    this.equipo_id = equipo_id;
-    this.pokemon_id = pokemon_id;
+public EquipoPokemonEntity(PokemonEntity pokemon, EquipoEntity equipo) {
+    this.pokemon = pokemon;
+    this.equipo = equipo;
 }
 
 public Long getId() {
@@ -39,22 +41,40 @@ public void setId(Long id) {
     this.id = id;
 }
 
-public int getEquipo_id() {
-    return equipo_id;
+public PokemonEntity getPokemon() {
+    return pokemon;
 }
 
-public void setEquipo_id(int equipo_id) {
-    this.equipo_id = equipo_id;
+public void setPokemon(PokemonEntity pokemon) {
+    this.pokemon = pokemon;
 }
 
-public int getPokemon_id() {
-    return pokemon_id;
+public EquipoEntity getEquipo() {
+    return equipo;
 }
 
-public void setPokemon_id(int pokemon_id) {
-    this.pokemon_id = pokemon_id;
+public void setEquipo(EquipoEntity equipo) {
+    this.equipo = equipo;
 }
 
+/*get pokemon id */
+public Long getPokemonId() {
+    return pokemon.getId();
+}
+
+/*get equipo id */
+public Long getEquipoId() {
+    return equipo.getId();
+}
+
+/*same with set */
+public void setPokemonId(Long id) {
+    pokemon.setId(id);
+}
+
+public void setEquipoId(Long id) {
+    equipo.setId(id);
+}
 
 
 }

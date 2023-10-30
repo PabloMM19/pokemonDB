@@ -3,11 +3,13 @@ package com.pokemondb.pokemon.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Page;
+import org.springframework.stereotype.Service;
 
 import com.pokemondb.pokemon.exception.ResourceNotFoundException;
 import com.pokemondb.pokemon.repository.EntrenadorRepository;
 import com.pokemondb.pokemon.entity.EntrenadorEntity;
 
+@Service
 public class EntrenadorService {
 
     @Autowired

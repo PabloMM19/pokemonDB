@@ -2,12 +2,14 @@ package com.pokemondb.pokemon.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
 import org.springframework.data.domain.Page;
 
 import com.pokemondb.pokemon.entity.EquipoEntity;
 import com.pokemondb.pokemon.exception.ResourceNotFoundException;
 import com.pokemondb.pokemon.repository.EquipoRepository;
 
+@Service
 public class EquipoService {
     @Autowired
     EquipoRepository oEquipoRepository;

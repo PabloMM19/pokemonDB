@@ -1,9 +1,12 @@
 package com.pokemondb.pokemon.entity;
 
+import java.util.List;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -18,7 +21,11 @@ public class EntrenadorEntity {
     private String password;
     private boolean role;
 
+    @OneToMany(mappedBy = "entrenador", fetch = jakarta.persistence.FetchType.LAZY)
+    private List<EquipoEntity> equipos;
+
     public EntrenadorEntity() {
+        equipos = new java.util.ArrayList<>();
     }
 
     public EntrenadorEntity(Long id, String email, String username, String password, boolean role) {
@@ -76,6 +83,8 @@ public class EntrenadorEntity {
         this.role = role;
     }
 
-    
+    public int getEquipos() {
+        return equipos.size();
+    }
 
 }
