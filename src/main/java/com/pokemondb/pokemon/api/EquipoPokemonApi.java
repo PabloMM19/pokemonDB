@@ -1,5 +1,6 @@
 package com.pokemondb.pokemon.api;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,6 +40,13 @@ public class EquipoPokemonApi {
     public ResponseEntity<EquipoPokemonEntity> get(@PathVariable("id") Long id) {
         return ResponseEntity.ok(oEquipoPokemonService.get(id));
     }
+
+    @GetMapping("/equipo/{equipoId}")
+public ResponseEntity<List<EquipoPokemonEntity>> getPokemonEquipo(@PathVariable("equipoId") Long equipoId) {
+    return ResponseEntity.ok(oEquipoPokemonService.getPokemonEquipo(equipoId));
+}
+
+
 
     @PostMapping("")
     public ResponseEntity<Long> create(@RequestBody Map<String, Long> request) {
