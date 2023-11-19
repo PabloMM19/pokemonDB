@@ -2,8 +2,10 @@ package com.pokemondb.pokemon.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.ResponseEntity;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.DeleteMapping;
 
 import com.pokemondb.pokemon.exception.ResourceNotFoundException;
 import com.pokemondb.pokemon.repository.EntrenadorRepository;
@@ -33,7 +35,7 @@ public class EntrenadorService {
         EntrenadorEntity oEntrenadorEntity = oEntrenadorRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Entrenador no encontrado"));
         oEntrenadorRepository.delete(oEntrenadorEntity);
-        return id;
+                return id;
     }
 
     public Page<EntrenadorEntity> getPage(Pageable pageable) {
@@ -51,4 +53,12 @@ public class EntrenadorService {
         }
         return oEntrenadorRepository.count();
     }
+
+   public Long empty() {
+    if (oEntrenadorRepository!=null) {
+        oEntrenadorRepository.deleteAll();
+        
+    }
+    return oEntrenadorRepository.count();
+        }
 }

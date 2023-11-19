@@ -20,7 +20,7 @@ public class EquipoEntity {
     private String nombre;
     private String descripcion;
 
-    @OneToMany(mappedBy = "equipo", fetch = jakarta.persistence.FetchType.LAZY)
+    @OneToMany(mappedBy = "equipo", fetch = jakarta.persistence.FetchType.LAZY, cascade = jakarta.persistence.CascadeType.ALL, orphanRemoval = true)
     private List<EquipoPokemonEntity> listaEquipos;
 
     @ManyToOne
