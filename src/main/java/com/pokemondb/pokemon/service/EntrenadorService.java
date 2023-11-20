@@ -61,4 +61,11 @@ public class EntrenadorService {
     }
     return oEntrenadorRepository.count();
         }
+
+/* create the method getbyusername*/
+public String getUsernameById(Long id) {
+    EntrenadorEntity oEntrenadorEntity = oEntrenadorRepository.findById(id)
+            .orElseThrow(() -> new ResourceNotFoundException("Entrenador no encontrado"));
+    return oEntrenadorEntity.getUsername();
+}
 }

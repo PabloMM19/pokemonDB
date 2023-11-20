@@ -34,7 +34,7 @@ public class EquipoApi {
         return ResponseEntity.ok(oEquipoService.create(oEquipoEntity));
     }
 
-    @PutMapping("")
+    @PutMapping("/{id}")
     public ResponseEntity<EquipoEntity> update(@RequestBody EquipoEntity oEquipoEntity) {
         return ResponseEntity.ok(oEquipoService.update(oEquipoEntity));
     }

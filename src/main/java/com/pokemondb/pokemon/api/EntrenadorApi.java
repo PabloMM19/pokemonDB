@@ -59,4 +59,10 @@ public class EntrenadorApi {
     public ResponseEntity<Long> empty() {
         return ResponseEntity.ok(oEntrenadorService.empty());
     }
+
+    /*get username by id */
+    @GetMapping("/username/{id}")
+    public ResponseEntity<String> getUsernameById(@PathVariable("id") Long id) {
+        return ResponseEntity.ok(oEntrenadorService.getUsernameById(id));
+    }
 }

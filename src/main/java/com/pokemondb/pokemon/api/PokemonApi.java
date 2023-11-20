@@ -35,7 +35,7 @@ public class PokemonApi {
         return ResponseEntity.ok(oPokemonService.create(oPokemonEntity));
     }
 
-    @PutMapping("")
+    @PutMapping("/{id}")
     public ResponseEntity<PokemonEntity> update(@RequestBody PokemonEntity oPokemonEntity) {
         return ResponseEntity.ok(oPokemonService.update(oPokemonEntity));
     }
