@@ -35,7 +35,7 @@ public class EntrenadorApi {
         return ResponseEntity.ok(oEntrenadorService.create(oEntrenadorEntity));
     }
 
-    @PutMapping("")
+    @PutMapping("/{id}")
     public ResponseEntity<EntrenadorEntity> update(@RequestBody EntrenadorEntity oEntrenadorEntity) {
         return ResponseEntity.ok(oEntrenadorService.update(oEntrenadorEntity));
     }
