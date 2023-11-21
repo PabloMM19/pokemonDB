@@ -65,4 +65,10 @@ public class EntrenadorApi {
     public ResponseEntity<String> getUsernameById(@PathVariable("id") Long id) {
         return ResponseEntity.ok(oEntrenadorService.getUsernameById(id));
     }
+
+    /* jwt validation */
+    @GetMapping("/jwt/{token}")
+    public ResponseEntity<String> validateJWT(@PathVariable("token") String token) {
+        return ResponseEntity.ok(oEntrenadorService.validateJWT(token));
+    }
 }
