@@ -99,4 +99,11 @@ public class EntrenadorService {
     public String validateJWT(String token) {
         return JWTHelper.validateJWT(token);
     }
+
+    /* create the method login */
+    public String login(EntrenadorEntity oEntrenadorEntity) {
+        EntrenadorEntity oEntrenadorEntityFromDB = oEntrenadorRepository.findByUsernameAndPassword(oEntrenadorEntity.getUsername(), oEntrenadorEntity.getPassword())
+                .orElseThrow(() -> new ResourceNotFoundException("Entrenador no encontrado"));
+        return JWTHelper.generateJWT(oEntrenadorEntityFromDB.getUsername());
+    }
 }
