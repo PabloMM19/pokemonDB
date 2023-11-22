@@ -30,6 +30,12 @@ public class EntrenadorApi {
         return ResponseEntity.ok(oEntrenadorService.get(id));
     }
 
+    /*get all trainers */
+    @GetMapping("/all")
+    public ResponseEntity<Iterable<EntrenadorEntity>> getAll() {
+        return ResponseEntity.ok(oEntrenadorService.getAll());
+    }
+
     @PostMapping("")
     public ResponseEntity<Long> create(@RequestBody EntrenadorEntity oEntrenadorEntity) {
         return ResponseEntity.ok(oEntrenadorService.create(oEntrenadorEntity));

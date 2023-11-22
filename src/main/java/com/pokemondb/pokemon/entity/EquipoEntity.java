@@ -37,6 +37,14 @@ public class EquipoEntity {
         this.descripcion = descripcion;
     }
 
+    /*constructor with entrenador */
+    public EquipoEntity(Long id, String nombre, String descripcion, EntrenadorEntity entrenador) {
+        this.id = id;
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.entrenador = entrenador;
+    }
+
     public EquipoEntity(String nombre, String descripcion) {
         this.nombre = nombre;
         this.descripcion = descripcion;

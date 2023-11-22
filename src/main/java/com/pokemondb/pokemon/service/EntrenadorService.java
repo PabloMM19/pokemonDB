@@ -34,16 +34,23 @@ public class EntrenadorService {
 
     }
 
+    public Iterable<EntrenadorEntity> getAll() {
+        return oEntrenadorRepository.findAll();
+    }
+
     public Long create(EntrenadorEntity oEntrenadorEntity) {
-        oSessionService.onlyAdmins();
+        //oSessionService.onlyAdmins();
         oEntrenadorEntity.setId(null);
         oEntrenadorEntity.setPassword(pokemonDBpassword);
         return oEntrenadorRepository.save(oEntrenadorEntity).getId();
     }
 
     public EntrenadorEntity update(EntrenadorEntity oEntrenadorEntity) {
-        EntrenadorEntity entrenadorFromEntity = this.get(oEntrenadorEntity.getId());
-        oSessionService.onlyAdminsOrUsersWithIisOwnData(oEntrenadorEntity.getId());
+        //EntrenadorEntity entrenadorFromEntity = this.get(oEntrenadorEntity.getId());
+         
+        oEntrenadorEntity.setPassword(pokemonDBpassword);
+        return oEntrenadorRepository.save(oEntrenadorEntity);
+        /*oSessionService.onlyAdminsOrUsersWithIisOwnData(oEntrenadorEntity.getId());
         if (oSessionService.isUser()) {            
             oEntrenadorEntity.setRole(oEntrenadorEntity.getRole());
             oEntrenadorEntity.setPassword(pokemonDBpassword);
@@ -51,7 +58,7 @@ public class EntrenadorService {
         } else {            
             oEntrenadorEntity.setPassword(pokemonDBpassword);
             return oEntrenadorRepository.save(oEntrenadorEntity);
-        }
+        }*/
         
     }
 

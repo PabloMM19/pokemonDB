@@ -5,6 +5,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.data.domain.Page;
 
+import com.pokemondb.pokemon.entity.EntrenadorEntity;
 import com.pokemondb.pokemon.entity.EquipoEntity;
 import com.pokemondb.pokemon.exception.ResourceNotFoundException;
 import com.pokemondb.pokemon.repository.EquipoRepository;
@@ -23,9 +24,21 @@ public class EquipoService {
         return oEquipoRepository.save(oEquipoEntity).getId();
     }
 
-    public EquipoEntity update(EquipoEntity oEquipoEntity) {
+    /*public EquipoEntity update(EquipoEntity oEquipoEntity) {
         return oEquipoRepository.save(oEquipoEntity);
+    }*/
+
+    /*update team*/
+    public EquipoEntity update(Long teamId, EntrenadorEntity oEntrenadorEntity) {
+        EquipoEntity oEquipoEntityInDB = this.get(teamId);
+        oEquipoEntityInDB.setNombre(oEquipoEntityInDB.getNombre());
+        oEquipoEntityInDB.setDescripcion(oEquipoEntityInDB.getDescripcion());
+        oEquipoEntityInDB.setEntrenador(oEquipoEntityInDB.getEntrenador());
+        // Otros campos que necesitas actualizar
+    
+        return oEquipoRepository.save(oEquipoEntityInDB);
     }
+    
 
     public Long delete(Long id) {
         EquipoEntity oEquipoEntity = oEquipoRepository.findById(id)

@@ -2,6 +2,9 @@ package com.pokemondb.pokemon.entity;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -28,7 +31,8 @@ public class EntrenadorEntity {
         equipos = new java.util.ArrayList<>();
     }
 
-    public EntrenadorEntity(Long id, String email, String username, String password, boolean role) {
+    @JsonCreator
+    public EntrenadorEntity( @JsonProperty("id") Long id, String email, String username, String password, boolean role) {
         this.id = id;
         this.email = email;
         this.username = username;

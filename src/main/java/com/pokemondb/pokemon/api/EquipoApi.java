@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.pokemondb.pokemon.entity.EntrenadorEntity;
 import com.pokemondb.pokemon.entity.EquipoEntity;
 import com.pokemondb.pokemon.service.EquipoService;
 
@@ -34,10 +35,13 @@ public class EquipoApi {
         return ResponseEntity.ok(oEquipoService.create(oEquipoEntity));
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<EquipoEntity> update(@RequestBody EquipoEntity oEquipoEntity) {
-        return ResponseEntity.ok(oEquipoService.update(oEquipoEntity));
-    }
+    @PutMapping("/{teamId}")
+public ResponseEntity<EquipoEntity> update(@PathVariable Long teamId, @RequestBody EntrenadorEntity oEntrenadorEntity) {
+    // Tu lógica de actualización aquí
+    return ResponseEntity.ok(oEquipoService.update(teamId, oEntrenadorEntity));
+}
+
+
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Long> delete(@PathVariable("id") Long id) {
